@@ -10,8 +10,8 @@ class bcolors:
 def banner():
     print(bcolors.RED + 'Bomber Email ')
     print(bcolors.RED + ':D ')
-    print(bcolors.YELLOW + 'Sigueme en Tiktok: Biyivi')
-    print(bcolors.YELLOW + 'Sigueme en instagram: _.baruj._')
+    print(bcolors.YELLOW + 'Sigueme en Tiktok: @biyivi')
+    print(bcolors.YELLOW + 'Sigueme en instagram: @b.i.y.i.v.i')
     print(bcolors.RED + '''
 
 
