@@ -3,6 +3,7 @@ import sys
 from colorama import Fore,Back,Style
 from time import sleep
 from tqdm import tqdm
+import time
 import os
 class bcolors:
     GREEN = '\033[92m'
@@ -73,6 +74,7 @@ class Email_Bomber:
 
     def __init__(self):
         try:
+            banner()
             print("")
             print("")
             s=Fore.RED+'Iniciando Programa....'
@@ -83,12 +85,18 @@ class Email_Bomber:
             barra()
             print("")
 
-            self.target = str(input(bcolors.GREEN + 'Ingresa el correo de la victima <: '))
+            self.target = str(input("💣️"+Fore.YELLOW+' Ingresa el correo de la victima'+Fore.LIGHTGREEN_EX+' >>> '))
             self.mode = int(
-                input(bcolors.GREEN + 'Ingresa la cantidad de mensajes que se enviaran (1,2,3,4)\n1:(1000)\n 2:(500)\n 3:(250)\n 4:(custom)\n>> '))
+                input("💥 "+ '''Elige la cantidad de mensajes que se enviaran:
+                '''+Fore.LIGHTRED_EX+'''                [1]'''+Fore.LIGHTYELLOW_EX+''' (1000)
+                '''+Fore.LIGHTRED_EX+'''                [2]'''+Fore.LIGHTYELLOW_EX+''' (500)
+                '''+Fore.LIGHTRED_EX+'''                [3]'''+Fore.LIGHTYELLOW_EX+''' (250)
+                '''+Fore.LIGHTRED_EX+'''                [4]'''+Fore.LIGHTYELLOW_EX+''' (custom)
+                '''+Fore.LIGHTGREEN_EX+'''>> '''))
             if int(self.mode) > int(4) or int(self.mode) < int(1):
-                print('ERROR: Opcion invalida. Adios :(.')
-                sys.exit(1)
+                print('ERROR: Opcion invalida. Cargando....')
+                time.sleep(3)
+                Email_Bomber()
         except Exception as e:
             print(f'ERROR: {e}')
 
@@ -103,7 +111,7 @@ class Email_Bomber:
             elif self.mode == int(3):
                 self.amount = int(250)
             else:
-                self.amount = int(input(bcolors.GREEN + 'Ingresa una cantidad :D <: '))
+                self.amount = int(input("💣️" +Fore.LIGHTYELLOW_EX+ " Ingresa una cantidad" ">> "))
             print(bcolors.RED + f'Tu opcion fue: {self.mode} y {self.amount} mensajes ')
         except Exception as e:
             print(f'ERROR: {e}')
@@ -163,7 +171,6 @@ class Email_Bomber:
 
 
 if __name__ == '__main__':
-    banner()
     bomb = Email_Bomber()
     bomb.bomb()
     bomb.email()
