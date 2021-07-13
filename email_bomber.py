@@ -1,15 +1,27 @@
 import smtplib
 import sys
 from colorama import Fore,Back,Style
-
+from time import sleep
+from tqdm import tqdm
+import os
 class bcolors:
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
     RED = '\033[91m'
-
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  
+        command = 'cls'
+    os.system(command)
+def barra():
+    loop= tqdm(total = 7000, position=0, leave=False)
+    for k in range(7000):
+        loop.set_description(Fore.MAGENTA+"Cargando...".format(k))
+        loop.update(1)
+    loop.close()
 def banner():
-
-    print(bcolors.RED + '''
+    clearConsole()
+    print(Fore.LIGHTRED_EX + '''
              . . .                         
               \|/                          
             `--+--'                        
@@ -33,22 +45,27 @@ def banner():
    `.#####################,'               
      `._###############_,'                 
         `--..#####..--'
-                 
+'''+Fore.LIGHTWHITE_EX+'''                 
 ███████╗███╗   ███╗ █████╗ ██╗██╗                   
 ██╔════╝████╗ ████║██╔══██╗██║██║                   
 █████╗  ██╔████╔██║███████║██║██║                   
 ██╔══╝  ██║╚██╔╝██║██╔══██║██║██║                   
 ███████╗██║ ╚═╝ ██║██║  ██║██║███████╗              
 ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝              
-                                                    
+'''+Fore.LIGHTRED_EX+'''                                                    
 ██████╗  ██████╗ ███╗   ███╗██████╗ ███████╗██████╗ 
 ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██╔════╝██╔══██╗
 ██████╔╝██║   ██║██╔████╔██║██████╔╝█████╗  ██████╔╝
 ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗
 ██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║
 ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-                                                   
                                                      ''')
+    s=Fore.YELLOW+'by: '+Fore.LIGHTMAGENTA_EX+'biyivi'
+    for i in s:
+        print (i, end="", flush=True)
+        sleep(0.1)
+    print("")
+
 
 
 class Email_Bomber:
@@ -56,10 +73,19 @@ class Email_Bomber:
 
     def __init__(self):
         try:
-            print(bcolors.RED + 'Iniciando Programa....')
+            print("")
+            print("")
+            s=Fore.RED+'Iniciando Programa....'
+            for i in s:
+                print (i, end="", flush=True)
+                sleep(0.1)
+            print("")
+            barra()
+            print("")
+
             self.target = str(input(bcolors.GREEN + 'Ingresa el correo de la victima <: '))
             self.mode = int(
-                input(bcolors.GREEN + 'Ingresa la cantidad de mensajes que se enviaran (1,2,3,4) || 1:(1000) 2:(500) 3:(250) 4:(custom) <: '))
+                input(bcolors.GREEN + 'Ingresa la cantidad de mensajes que se enviaran (1,2,3,4)\n1:(1000)\n 2:(500)\n 3:(250)\n 4:(custom)\n>> '))
             if int(self.mode) > int(4) or int(self.mode) < int(1):
                 print('ERROR: Opcion invalida. Adios :(.')
                 sys.exit(1)
